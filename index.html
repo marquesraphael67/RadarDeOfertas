@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071329">
+  <meta name="description" content="Descubra achadinhos, ofertas e promoções no Radar de Ofertas. Entre grátis no nosso grupo!">
+
+  <title>Radar de Ofertas | Achadinhos e Promoções</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #071329;
+      --bg2: #0b1d38;
+      --card: #102443;
+      --yellow: #ffdb35;
+      --orange: #ff9418;
+      --white: #ffffff;
+      --muted: #a9b8ce;
+      --green: #25d366;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 50% 0%, #183e70 0%, transparent 45%),
+        linear-gradient(180deg, #071329 0%, #09172c 55%, #050d1b 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(100% - 36px, 1000px);
+      margin: auto;
+    }
+
+    /* CABEÇALHO */
+
+    header {
+      border-bottom: 1px solid #ffffff12;
+      background: #071329a8;
+      backdrop-filter: blur(14px);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: .3px;
+    }
+
+    .brand-icon {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      border-radius: 12px;
+      color: #101a2b;
+      font-size: 22px;
+      box-shadow: 0 0 22px #ffbd2440;
+    }
+
+    .brand span:last-child {
+      color: var(--yellow);
+    }
+
+    .header-link {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px 15px;
+      border: 1px solid #ffffff25;
+      border-radius: 10px;
+      transition: .2s;
+    }
+
+    .header-link:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    /* DESTAQUE PRINCIPAL */
+
+    .hero {
+      text-align: center;
+      padding: 55px 0 35px;
+      position: relative;
+    }
+
+    .logo {
+      width: min(100%, 330px);
+      height: auto;
+      display: block;
+      margin: 0 auto 25px;
+      filter: drop-shadow(0 15px 35px #0008);
+      animation: aparecer .8s ease both;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid #ffdb354d;
+      border-radius: 100px;
+      background: #ffdb3510;
+      color: var(--yellow);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #25d36699;
+    }
+
+    h1 {
+      font-size: clamp(37px, 7vw, 65px);
+      line-height: 1.06;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      margin: 24px auto 20px;
+    }
+
+    h1 .highlight {
+      background: linear-gradient(90deg, #fff17b, var(--yellow), var(--orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      max-width: 630px;
+      margin: auto;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .subtitle strong {
+      color: var(--white);
+    }
+
+    /* BOTÃO PRINCIPAL */
+
+    .cta-area {
+      margin: 32px auto 0;
+      width: min(100%, 440px);
+    }
+
+    .cta {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 13px;
+      width: 100%;
+      min-height: 78px;
+      padding: 15px 18px;
+      border-radius: 17px;
+      background: linear-gradient(110deg, #ffe65a 0%, #ffc928 45%, #ff9718 100%);
+      color: #121a29;
+      text-decoration: none;
+      box-shadow:
+        0 0 0 1px #fff5a566 inset,
+        0 8px 0 #c8750d,
+        0 15px 35px #ffae2340;
+      transition: transform .2s, box-shadow .2s;
+      animation: pulsar 2.8s ease-in-out infinite;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: -50%;
+      left: -75%;
+      width: 45%;
+      height: 200%;
+      background: #ffffff85;
+      transform: rotate(25deg);
+      animation: brilho 4s ease-in-out infinite;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 0 1px #fff5a5 inset,
+        0 8px 0 #c8750d,
+        0 20px 45px #ffae2360;
+    }
+
+    .cta:active {
+      transform: translateY(3px);
+      box-shadow: 0 3px 0 #c8750d;
+    }
+
+    .cta-icon {
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      background: #07132915;
+      border: 1px solid #07132920;
+      border-radius: 13px;
+      font-size: 25px;
+    }
+
+    .cta-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      text-align: left;
+    }
+
+    .cta-text strong {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -.3px;
+    }
+
+    .cta-text small {
+      font-size: 11px;
+      font-weight: 700;
+      opacity: .8;
+    }
+
+    .cta-arrow {
+      margin-left: auto;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .cta-note {
+      color: #91a4c1;
+      font-size: 11px;
+      margin-top: 22px;
+      line-height: 1.8;
+    }
+
+    /* SEÇÃO DE BENEFÍCIOS */
+
+    .section-heading {
+      text-align: center;
+      margin: 48px auto 25px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(23px, 4vw, 32px);
+      font-weight: 900;
+      letter-spacing: -.8px;
+    }
+
+    .section-heading h2 span {
+      color: var(--yellow);
+    }
+
+    .section-heading p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 35px;
+    }
+
+    .benefit {
+      position: relative;
+      padding: 25px 21px;
+      background: linear-gradient(145deg, #122b4c, #0b1a31);
+      border: 1px solid #ffffff14;
+      border-radius: 19px;
+      text-align: left;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .benefit:hover {
+      transform: translateY(-5px);
+      border-color: #ffdb3555;
+    }
+
+    .benefit-icon {
+      display: grid;
+      place-items: center;
+      width: 49px;
+      height: 49px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ffdb3520, #ff941820);
+      border: 1px solid #ffdb3528;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .benefit h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .benefit p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* CHAMADA FINAL */
+
+    .final-card {
+      margin: 20px auto 55px;
+      padding: 32px 20px;
+      border-radius: 24px;
+      text-align: center;
+      border: 1px solid #ffdb3529;
+      background:
+        radial-gradient(ellipse at top, #ffb82013, transparent 65%),
+        #0d203b;
+    }
+
+    .final-card .emoji {
+      font-size: 36px;
+      margin-bottom: 13px;
+    }
+
+    .final-card h2 {
+      font-size: clamp(22px, 4vw, 31px);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .final-card p {
+      max-width: 470px;
+      margin: 12px auto 23px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .cta-secondary {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 23px;
+      border: 1px solid #ffdb3580;
+      border-radius: 13px;
+      background: #ffdb3512;
+      color: var(--yellow);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .cta-secondary:hover {
+      background: var(--yellow);
+      color: #071329;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      border-top: 1px solid #ffffff12;
+      padding: 26px 18px;
+      text-align: center;
+      color: #8093af;
+      font-size: 11px;
+      line-height: 2;
+    }
+
+    footer strong {
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    /* BOTÃO FIXO NO CELULAR */
+
+    .mobile-cta {
+      display: none;
+    }
+
+    /* ANIMAÇÕES */
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes brilho {
+      0%, 60% {
+        left: -75%;
+      }
+      85%, 100% {
+        left: 140%;
+      }
+    }
+
+    @keyframes pulsar {
+      0%, 100% {
+        box-shadow:
+          0 0 0 1px #fff5a566 inset,
+          0 8px 0 #c8750d,
+          0 15px 35px #ffae2340;
+      }
+      50% {
+        box-shadow:
+          0 0 0 1px #fff5a566 inset,
+          0 8px 0 #c8750d,
+          0 15px 45px #ffae2370;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 30px, 500px);
+      }
+
+      .navbar {
+        min-height: 65px;
+      }
+
+      .brand {
+        font-size: 12px;
+        gap: 7px;
+      }
+
+      .brand-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 19px;
+      }
+
+      .header-link {
+        font-size: 11px;
+        padding: 10px;
+      }
+
+      .hero {
+        padding-top: 35px;
+      }
+
+      .logo {
+        width: min(85%, 285px);
+        margin-bottom: 23px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 10vw, 49px);
+        letter-spacing: -1.8px;
+        margin-top: 21px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        line-height: 1.85;
+      }
+
+      .cta-area {
+        margin-top: 27px;
+      }
+
+      .cta {
+        min-height: 75px;
+        padding: 13px;
+        gap: 10px;
+      }
+
+      .cta-text strong {
+        font-size: 14px;
+      }
+
+      .cta-text small {
+        font-size: 10px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .benefit {
+        display: grid;
+        grid-template-columns: 49px 1fr;
+        column-gap: 14px;
+        padding: 18px;
+      }
+
+      .benefit-icon {
+        grid-row: span 2;
+        margin-bottom: 0;
+      }
+
+      .benefit h3 {
+        align-self: end;
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+
+      .benefit p {
+        font-size: 12px;
+      }
+
+      .section-heading {
+        margin-top: 43px;
+      }
+
+      .final-card {
+        margin-bottom: 30px;
+        padding: 28px 18px;
+      }
+
+      .mobile-cta {
+        display: block;
+        position: fixed;
+        z-index: 20;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 12px 15px calc(12px + env(safe-area-inset-bottom));
+        background: linear-gradient(180deg, #07132900, #071329f5 25%);
+      }
+
+      .mobile-cta a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 9px;
+        min-height: 54px;
+        padding: 13px;
+        border-radius: 13px;
+        background: linear-gradient(100deg, var(--yellow), var(--orange));
+        color: #101827;
+        text-decoration: none;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 900;
+        box-shadow: 0 5px 22px #ffae2340;
+      }
+
+      footer {
+        padding-bottom: 95px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <div class="brand">
+        <div class="brand-icon">⌖</div>
+        <div>RADAR <span>DE OFERTAS</span></div>
+      </div>
+
+      <a
+        class="header-link"
+        href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Entrar no grupo ↗
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+
+      <!-- COLOQUE SUA LOGO EM img/logo.png -->
+      <img
+        class="logo"
+        src="img/logo.png"
+        alt="Logo Radar de Ofertas"
+      >
+
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Seu próximo achadinho está aqui
+      </div>
+
+      <h1>
+        Economizar ficou<br>
+        <span class="highlight">muito mais fácil.</span>
+      </h1>
+
+      <p class="subtitle">
+        Descubra o <strong>Radar de Ofertas</strong>:
+        seu lugar para encontrar achadinhos, conhecer produtos
+        interessantes e ficar por dentro de promoções.
+        Tudo isso em um só grupo!
+      </p>
+
+      <div class="cta-area">
+        <a
+          class="cta"
+          href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="cta-icon">💬</span>
+
+          <span class="cta-text">
+            <strong>QUERO ENTRAR NO GRUPO!</strong>
+            <small>Toque aqui e confira os achadinhos</small>
+          </span>
+
+          <span class="cta-arrow">➜</span>
+        </a>
+
+        <p class="cta-note">
+          ✦ Acesse o convite pelo WhatsApp e confira as ofertas.
+        </p>
+      </div>
+
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <h2>Por que entrar no <span>Radar?</span></h2>
+        <p>Mais praticidade para descobrir produtos e oportunidades.</p>
+      </div>
+
+      <div class="benefits">
+
+        <article class="benefit">
+          <div class="benefit-icon">🛍️</div>
+          <h3>Achadinhos selecionados</h3>
+          <p>
+            Descubra produtos de diferentes categorias
+            e conheça opções para o seu dia a dia.
+          </p>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">✨</div>
+          <h3>Ofertas em destaque</h3>
+          <p>
+            Encontre promoções compartilhadas no grupo
+            e consulte os preços antes de comprar.
+          </p>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">🎯</div>
+          <h3>Tudo em um só lugar</h3>
+          <p>
+            Reúna os seus achadinhos em um único espaço
+            e facilite sua busca por produtos.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="final-card">
+      <div class="emoji">🚀</div>
+
+      <h2>
+        Seu próximo achadinho<br>
+        pode estar a um clique!
+      </h2>
+
+      <p>
+        Entre no Radar de Ofertas e acompanhe os produtos,
+        as novidades e as oportunidades divulgadas no grupo.
+      </p>
+
+      <a
+        class="cta-secondary"
+        href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        💛 Acessar o grupo agora ↗
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>RADAR DE OFERTAS</strong><br>
+    As melhores ofertas, sempre!<br>
+    <span>
+      Preços, frete e disponibilidade podem mudar.
+      Confira as condições diretamente na loja.
+    </span><br>
+    Alguns links divulgados podem ser links de afiliado.
+  </footer>
+
+  <!-- BOTÃO FIXO EXCLUSIVO PARA CELULARES -->
+  <div class="mobile-cta">
+    <a
+      href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💬 ENTRAR NO RADAR DE OFERTAS ↗
+    </a>
+  </div>
+
+</body>
+</html>
