@@ -3,9 +3,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#071329">
-  <meta name="description" content="Descubra achadinhos, ofertas e promoções no Radar de Ofertas. Entre grátis no nosso grupo!">
+  <meta name="description" content="Descubra achadinhos, ofertas e promoções no Radar de Ofertas. Entre no nosso grupo do WhatsApp!">
 
   <title>Radar de Ofertas | Achadinhos e Promoções</title>
 
@@ -16,13 +16,13 @@
   <style>
     :root {
       --bg: #071329;
-      --bg2: #0b1d38;
-      --card: #102443;
       --yellow: #ffdb35;
       --orange: #ff9418;
       --white: #ffffff;
-      --muted: #a9b8ce;
-      --green: #25d366;
+      --muted: #a7b6cc;
+      --green: #25D366;
+      --green-dark: #128C45;
+      --border: rgba(255,255,255,.10);
     }
 
     * {
@@ -33,37 +33,46 @@
 
     html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
-      font-family: 'Inter', Arial, sans-serif;
-      color: var(--white);
-      background:
-        radial-gradient(ellipse at 50% 0%, #183e70 0%, transparent 45%),
-        linear-gradient(180deg, #071329 0%, #09172c 55%, #050d1b 100%);
       min-height: 100vh;
+      min-height: 100dvh;
       overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at 50% 0%, #193b68 0%, transparent 48%),
+        linear-gradient(180deg, #071329, #08162b 70%, #050b17);
+      color: var(--white);
+      font-family: 'Inter', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
       -webkit-tap-highlight-color: transparent;
     }
 
+    a:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 5px;
+    }
+
     .container {
-      width: min(100% - 36px, 1000px);
-      margin: auto;
+      width: min(100% - 40px, 1020px);
+      margin-inline: auto;
     }
 
     /* CABEÇALHO */
 
     header {
-      border-bottom: 1px solid #ffffff12;
-      background: #071329a8;
-      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      background: rgba(7,19,41,.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
     .navbar {
-      min-height: 76px;
+      min-height: 72px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -74,223 +83,264 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 900;
-      font-size: 15px;
-      letter-spacing: .3px;
+      min-width: 0;
+      color: white;
+      text-decoration: none;
     }
 
-    .brand-icon {
-      width: 39px;
-      height: 39px;
+    .brand-mark {
+      width: 38px;
+      height: 38px;
       display: grid;
       place-items: center;
+      flex-shrink: 0;
+      border-radius: 11px;
       background: linear-gradient(135deg, var(--yellow), var(--orange));
-      border-radius: 12px;
-      color: #101a2b;
-      font-size: 22px;
-      box-shadow: 0 0 22px #ffbd2440;
+      color: #071329;
     }
 
-    .brand span:last-child {
-      color: var(--yellow);
+    .brand-mark svg {
+      width: 22px;
+      height: 22px;
     }
 
-    .header-link {
-      color: var(--white);
-      text-decoration: none;
+    .brand-name {
       font-size: 13px;
-      font-weight: 700;
-      padding: 11px 15px;
-      border: 1px solid #ffffff25;
-      border-radius: 10px;
-      transition: .2s;
+      font-weight: 900;
+      letter-spacing: .5px;
+      white-space: nowrap;
     }
 
-    .header-link:hover {
-      border-color: var(--yellow);
+    .brand-name span {
       color: var(--yellow);
     }
 
-    /* DESTAQUE PRINCIPAL */
-
-    .hero {
-      text-align: center;
-      padding: 55px 0 35px;
-      position: relative;
-    }
-
-    .logo {
-      width: min(100%, 330px);
-      height: auto;
-      display: block;
-      margin: 0 auto 25px;
-      filter: drop-shadow(0 15px 35px #0008);
-      animation: aparecer .8s ease both;
-    }
-
-    .pill {
+    .nav-button {
+      min-height: 42px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 16px;
-      border: 1px solid #ffdb354d;
-      border-radius: 100px;
-      background: #ffdb3510;
-      color: var(--yellow);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.3px;
+      padding: 10px 14px;
+      border: 1px solid #62f49a;
+      border-radius: 10px;
+      background: var(--green);
+      color: #062b16;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+      transition: .2s;
     }
 
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--green);
-      border-radius: 50%;
-      box-shadow: 0 0 10px #25d36699;
+    .nav-button:hover {
+      background: #42e879;
+      transform: translateY(-2px);
+    }
+
+    .nav-button svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    /* APRESENTAÇÃO */
+
+    .hero {
+      text-align: center;
+      padding: 38px 0 30px;
+    }
+
+    .logo {
+      display: block;
+      width: min(100%, 190px);
+      max-height: 190px;
+      object-fit: contain;
+      margin: 0 auto 23px;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.3));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255,219,53,.25);
+      border-radius: 100px;
+      background: rgba(255,219,53,.06);
+      color: #ffe577;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
     }
 
     h1 {
-      font-size: clamp(37px, 7vw, 65px);
-      line-height: 1.06;
+      margin: 22px auto 17px;
+      font-size: clamp(36px, 6vw, 61px);
+      line-height: 1.08;
       font-weight: 900;
-      letter-spacing: -2.5px;
-      margin: 24px auto 20px;
+      letter-spacing: -2.2px;
     }
 
-    h1 .highlight {
-      background: linear-gradient(90deg, #fff17b, var(--yellow), var(--orange));
+    .gradient-text {
+      color: var(--yellow);
+      background: linear-gradient(90deg, #fff09b, var(--yellow), var(--orange));
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent;
+      -webkit-text-fill-color: transparent;
     }
 
-    .subtitle {
-      max-width: 630px;
-      margin: auto;
-      font-size: 16px;
-      line-height: 1.9;
+    .description {
+      max-width: 590px;
+      margin: 0 auto;
       color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
     }
 
-    .subtitle strong {
-      color: var(--white);
+    .description strong {
+      color: white;
     }
 
-    /* BOTÃO PRINCIPAL */
+    /* BOTÃO PRINCIPAL WHATSAPP */
 
-    .cta-area {
-      margin: 32px auto 0;
-      width: min(100%, 440px);
+    .cta-wrap {
+      width: min(100%, 430px);
+      margin: 28px auto 0;
     }
 
     .cta {
       position: relative;
       isolation: isolate;
       overflow: hidden;
+      min-height: 76px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 13px;
-      width: 100%;
-      min-height: 78px;
       padding: 15px 18px;
-      border-radius: 17px;
-      background: linear-gradient(110deg, #ffe65a 0%, #ffc928 45%, #ff9718 100%);
-      color: #121a29;
+      border: 1px solid #62f49a;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #25D366, #16B956 60%, #0D9F4B);
+      color: #ffffff;
+      text-align: left;
       text-decoration: none;
       box-shadow:
-        0 0 0 1px #fff5a566 inset,
-        0 8px 0 #c8750d,
-        0 15px 35px #ffae2340;
-      transition: transform .2s, box-shadow .2s;
-      animation: pulsar 2.8s ease-in-out infinite;
+        0 5px 0 #087d38,
+        0 12px 32px #25D36645;
+      transition: transform .2s, box-shadow .2s, filter .2s;
+      animation: whatsappGlow 2.5s ease-in-out infinite;
     }
 
     .cta::before {
       content: "";
       position: absolute;
       z-index: -1;
-      top: -50%;
-      left: -75%;
+      top: -60%;
+      left: -90%;
       width: 45%;
-      height: 200%;
-      background: #ffffff85;
+      height: 220%;
+      background: rgba(255,255,255,.32);
       transform: rotate(25deg);
-      animation: brilho 4s ease-in-out infinite;
+      animation: shine 5s ease-in-out infinite;
+      pointer-events: none;
     }
 
     .cta:hover {
       transform: translateY(-3px);
+      filter: brightness(1.08);
       box-shadow:
-        0 0 0 1px #fff5a5 inset,
-        0 8px 0 #c8750d,
-        0 20px 45px #ffae2360;
+        0 7px 0 #087d38,
+        0 18px 42px #25D36660;
     }
 
     .cta:active {
-      transform: translateY(3px);
-      box-shadow: 0 3px 0 #c8750d;
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #087d38;
     }
 
     .cta-icon {
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
       width: 43px;
       height: 43px;
-      background: #07132915;
-      border: 1px solid #07132920;
-      border-radius: 13px;
-      font-size: 25px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: #ffffff20;
+      border: 1px solid #ffffff35;
     }
 
-    .cta-text {
+    .cta-icon svg {
+      width: 25px;
+      height: 25px;
+      stroke-width: 2.3;
+    }
+
+    .cta-copy {
       display: flex;
+      flex: 1;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-      text-align: left;
+      gap: 5px;
+      min-width: 0;
     }
 
-    .cta-text strong {
-      font-size: 16px;
+    .cta-copy strong {
+      font-size: 14px;
+      line-height: 1.3;
       font-weight: 900;
-      letter-spacing: -.3px;
     }
 
-    .cta-text small {
-      font-size: 11px;
-      font-weight: 700;
-      opacity: .8;
+    .cta-copy small {
+      font-size: 10px;
+      font-weight: 600;
+      color: #eafff0;
+      line-height: 1.4;
     }
 
     .cta-arrow {
-      margin-left: auto;
-      font-size: 24px;
-      font-weight: 900;
+      width: 23px;
+      height: 23px;
+      flex-shrink: 0;
+      color: #ffffff;
     }
 
-    .cta-note {
-      color: #91a4c1;
+    .trust-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 17px;
+      color: #9eafc7;
       font-size: 11px;
-      margin-top: 22px;
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
-    /* SEÇÃO DE BENEFÍCIOS */
+    .trust-note svg {
+      width: 15px;
+      height: 15px;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* BENEFÍCIOS */
 
     .section-heading {
+      margin: 38px auto 23px;
       text-align: center;
-      margin: 48px auto 25px;
     }
 
     .section-heading h2 {
-      font-size: clamp(23px, 4vw, 32px);
+      font-size: clamp(23px, 4vw, 31px);
+      line-height: 1.3;
       font-weight: 900;
-      letter-spacing: -.8px;
+      letter-spacing: -.7px;
     }
 
     .section-heading h2 span {
@@ -298,307 +348,386 @@
     }
 
     .section-heading p {
-      margin-top: 10px;
+      margin-top: 9px;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
+      font-size: 12px;
+      line-height: 1.8;
     }
 
     .benefits {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 35px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
     }
 
     .benefit {
-      position: relative;
-      padding: 25px 21px;
-      background: linear-gradient(145deg, #122b4c, #0b1a31);
-      border: 1px solid #ffffff14;
-      border-radius: 19px;
-      text-align: left;
-      transition: transform .25s, border-color .25s;
+      min-width: 0;
+      padding: 23px 20px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: linear-gradient(145deg, #112846, #0b1a30);
+      transition: border-color .2s, transform .2s;
     }
 
     .benefit:hover {
-      transform: translateY(-5px);
-      border-color: #ffdb3555;
+      transform: translateY(-3px);
+      border-color: rgba(255,219,53,.35);
     }
 
     .benefit-icon {
+      width: 45px;
+      height: 45px;
       display: grid;
       place-items: center;
-      width: 49px;
-      height: 49px;
-      border-radius: 15px;
-      background: linear-gradient(135deg, #ffdb3520, #ff941820);
-      border: 1px solid #ffdb3528;
-      font-size: 24px;
-      margin-bottom: 20px;
+      margin-bottom: 17px;
+      border: 1px solid rgba(255,219,53,.19);
+      border-radius: 13px;
+      background: rgba(255,219,53,.08);
+      color: var(--yellow);
+    }
+
+    .benefit-icon svg {
+      width: 23px;
+      height: 23px;
+      stroke-width: 1.8;
     }
 
     .benefit h3 {
-      font-size: 16px;
+      margin-bottom: 9px;
+      font-size: 14px;
       font-weight: 800;
-      margin-bottom: 10px;
+      line-height: 1.5;
     }
 
     .benefit p {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.8;
     }
 
     /* CHAMADA FINAL */
 
     .final-card {
-      margin: 20px auto 55px;
-      padding: 32px 20px;
-      border-radius: 24px;
-      text-align: center;
-      border: 1px solid #ffdb3529;
+      margin: 27px auto 43px;
+      padding: 30px 22px;
+      border: 1px solid rgba(255,219,53,.19);
+      border-radius: 20px;
       background:
-        radial-gradient(ellipse at top, #ffb82013, transparent 65%),
+        radial-gradient(ellipse at top, rgba(255,184,32,.09), transparent 70%),
         #0d203b;
+      text-align: center;
     }
 
-    .final-card .emoji {
-      font-size: 36px;
-      margin-bottom: 13px;
+    .final-icon {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 15px;
+      border-radius: 15px;
+      background: rgba(255,219,53,.09);
+      color: var(--yellow);
+    }
+
+    .final-icon svg {
+      width: 26px;
+      height: 26px;
     }
 
     .final-card h2 {
-      font-size: clamp(22px, 4vw, 31px);
+      font-size: clamp(23px, 4vw, 31px);
       font-weight: 900;
-      line-height: 1.25;
+      line-height: 1.3;
     }
 
     .final-card p {
-      max-width: 470px;
-      margin: 12px auto 23px;
+      max-width: 460px;
+      margin: 11px auto 21px;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.8;
     }
 
-    .cta-secondary {
+    .secondary-cta {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      padding: 16px 23px;
-      border: 1px solid #ffdb3580;
-      border-radius: 13px;
-      background: #ffdb3512;
-      color: var(--yellow);
-      text-decoration: none;
+      min-height: 50px;
+      padding: 14px 22px;
+      border: 1px solid #62f49a;
+      border-radius: 12px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #25D366, #16B956);
+      box-shadow: 0 8px 24px #25D36630;
+      font-size: 13px;
       font-weight: 800;
-      font-size: 14px;
-      transition: .2s;
+      text-decoration: none;
+      transition: transform .2s, filter .2s;
     }
 
-    .cta-secondary:hover {
-      background: var(--yellow);
-      color: #071329;
+    .secondary-cta:hover {
+      background: linear-gradient(135deg, #36e477, #19bd59);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .secondary-cta svg {
+      width: 17px;
+      height: 17px;
     }
 
     /* RODAPÉ */
 
     footer {
-      border-top: 1px solid #ffffff12;
-      padding: 26px 18px;
+      padding: 23px 18px;
+      border-top: 1px solid var(--border);
+      color: #8496b0;
       text-align: center;
-      color: #8093af;
-      font-size: 11px;
+      font-size: 10px;
       line-height: 2;
     }
 
     footer strong {
-      color: #ffffff;
+      color: white;
       letter-spacing: 1px;
     }
 
     /* BOTÃO FIXO NO CELULAR */
 
-    .mobile-cta {
+    .mobile-bar {
       display: none;
     }
 
-    /* ANIMAÇÕES */
-
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes brilho {
-      0%, 60% {
-        left: -75%;
-      }
-      85%, 100% {
-        left: 140%;
-      }
-    }
-
-    @keyframes pulsar {
-      0%, 100% {
-        box-shadow:
-          0 0 0 1px #fff5a566 inset,
-          0 8px 0 #c8750d,
-          0 15px 35px #ffae2340;
-      }
-      50% {
-        box-shadow:
-          0 0 0 1px #fff5a566 inset,
-          0 8px 0 #c8750d,
-          0 15px 45px #ffae2370;
-      }
-    }
+    /* RESPONSIVIDADE */
 
     @media (max-width: 700px) {
       .container {
-        width: min(100% - 30px, 500px);
+        width: calc(100% - 32px);
       }
 
       .navbar {
-        min-height: 65px;
+        min-height: 64px;
       }
 
       .brand {
-        font-size: 12px;
-        gap: 7px;
+        gap: 8px;
       }
 
-      .brand-icon {
+      .brand-mark {
         width: 34px;
         height: 34px;
-        font-size: 19px;
       }
 
-      .header-link {
+      .brand-name {
         font-size: 11px;
-        padding: 10px;
+      }
+
+      .nav-button {
+        min-height: 38px;
+        padding: 9px 10px;
+        font-size: 10px;
       }
 
       .hero {
-        padding-top: 35px;
+        padding-top: 28px;
       }
 
       .logo {
-        width: min(85%, 285px);
-        margin-bottom: 23px;
+        width: 140px;
+        max-height: 140px;
+        margin-bottom: 19px;
+      }
+
+      .eyebrow {
+        gap: 7px;
+        padding: 8px 11px;
+        font-size: 9px;
+        letter-spacing: .7px;
       }
 
       h1 {
-        font-size: clamp(36px, 10vw, 49px);
-        letter-spacing: -1.8px;
-        margin-top: 21px;
+        margin: 20px auto 15px;
+        font-size: clamp(34px, 9vw, 47px);
+        letter-spacing: -1.7px;
       }
 
-      .subtitle {
-        font-size: 14px;
+      .description {
+        font-size: 13px;
         line-height: 1.85;
       }
 
-      .cta-area {
-        margin-top: 27px;
+      .cta-wrap {
+        margin-top: 24px;
       }
 
       .cta {
-        min-height: 75px;
-        padding: 13px;
+        min-height: 68px;
         gap: 10px;
+        padding: 12px;
+        border-radius: 14px;
       }
 
-      .cta-text strong {
-        font-size: 14px;
+      .cta-icon {
+        width: 38px;
+        height: 38px;
       }
 
-      .cta-text small {
+      .cta-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .cta-copy strong {
+        font-size: 12px;
+      }
+
+      .cta-copy small {
+        font-size: 9px;
+      }
+
+      .trust-note {
         font-size: 10px;
+      }
+
+      .section-heading {
+        margin-top: 35px;
+      }
+
+      .section-heading p {
+        font-size: 11px;
       }
 
       .benefits {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 10px;
       }
 
       .benefit {
         display: grid;
-        grid-template-columns: 49px 1fr;
-        column-gap: 14px;
-        padding: 18px;
+        grid-template-columns: 43px minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        align-items: start;
+        column-gap: 13px;
+        padding: 16px;
       }
 
       .benefit-icon {
-        grid-row: span 2;
-        margin-bottom: 0;
+        width: 43px;
+        height: 43px;
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        margin: 0;
       }
 
       .benefit h3 {
-        align-self: end;
-        font-size: 15px;
-        margin-bottom: 5px;
+        grid-column: 2;
+        margin: 0 0 4px;
+        font-size: 13px;
       }
 
       .benefit p {
-        font-size: 12px;
-      }
-
-      .section-heading {
-        margin-top: 43px;
+        grid-column: 2;
+        font-size: 11px;
+        line-height: 1.7;
       }
 
       .final-card {
-        margin-bottom: 30px;
-        padding: 28px 18px;
+        margin: 20px auto 28px;
+        padding: 25px 16px;
+        border-radius: 17px;
       }
 
-      .mobile-cta {
-        display: block;
+      .final-card p {
+        font-size: 12px;
+      }
+
+      .mobile-bar {
         position: fixed;
-        z-index: 20;
+        z-index: 100;
+        right: 0;
         bottom: 0;
         left: 0;
-        right: 0;
-        padding: 12px 15px calc(12px + env(safe-area-inset-bottom));
-        background: linear-gradient(180deg, #07132900, #071329f5 25%);
+        display: block;
+        padding: 10px 15px calc(10px + env(safe-area-inset-bottom));
+        background: linear-gradient(to bottom, transparent, rgba(5,13,27,.98) 24%);
+        pointer-events: none;
       }
 
-      .mobile-cta a {
+      .mobile-bar a {
+        pointer-events: auto;
+        min-height: 52px;
         display: flex;
-        justify-content: center;
         align-items: center;
-        gap: 9px;
-        min-height: 54px;
+        justify-content: center;
+        gap: 10px;
         padding: 13px;
+        border: 1px solid #62f49a;
         border-radius: 13px;
-        background: linear-gradient(100deg, var(--yellow), var(--orange));
-        color: #101827;
+        background: linear-gradient(135deg, #25D366, #16B956);
+        color: #ffffff;
+        box-shadow: 0 5px 25px #25D36650;
         text-decoration: none;
-        text-align: center;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 900;
-        box-shadow: 0 5px 22px #ffae2340;
+        transition: filter .2s;
+      }
+
+      .mobile-bar a:hover {
+        filter: brightness(1.08);
+      }
+
+      .mobile-bar svg {
+        width: 20px;
+        height: 20px;
       }
 
       footer {
-        padding-bottom: 95px;
+        padding-bottom: 94px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        width: calc(100% - 24px);
+      }
+
+      .brand-name {
+        font-size: 10px;
+      }
+
+      .nav-button {
+        padding-inline: 8px;
+      }
+
+      h1 {
+        font-size: 33px;
+      }
+
+      .cta-copy strong {
+        font-size: 11px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation: none !important;
-        scroll-behavior: auto !important;
         transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @keyframes shine {
+      0%, 70% { left: -90%; }
+      90%, 100% { left: 150%; }
+    }
+
+    @keyframes whatsappGlow {
+      0%, 100% {
+        box-shadow: 0 5px 0 #087d38, 0 12px 28px #25D36630;
+      }
+      50% {
+        box-shadow: 0 5px 0 #087d38, 0 12px 38px #25D36665;
       }
     }
   </style>
@@ -608,18 +737,21 @@
 
   <header>
     <div class="container navbar">
-      <div class="brand">
-        <div class="brand-icon">⌖</div>
-        <div>RADAR <span>DE OFERTAS</span></div>
-      </div>
+      <a class="brand" href="#" aria-label="Radar de Ofertas - início">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="7.5"/>
+            <path d="m16 16 5 5M10.5 6v4.5L14 13"/>
+          </svg>
+        </span>
+        <span class="brand-name">RADAR <span>DE OFERTAS</span></span>
+      </a>
 
-      <a
-        class="header-link"
-        href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Entrar no grupo ↗
+      <a class="nav-button" href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1" target="_blank" rel="noopener noreferrer">
+        Entrar no grupo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7M7 7h10v10"/>
+        </svg>
       </a>
     </div>
   </header>
@@ -628,49 +760,58 @@
 
     <section class="hero">
 
-      <!-- COLOQUE SUA LOGO EM img/logo.png -->
+      <!-- SUA LOGO: mantenha o arquivo em img/logo.png -->
       <img
         class="logo"
         src="img/logo.png"
         alt="Logo Radar de Ofertas"
+        width="190"
+        height="190"
+        fetchpriority="high"
       >
 
-      <div class="pill">
-        <span class="pill-dot"></span>
-        Seu próximo achadinho está aqui
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/>
+        </svg>
+        Seu radar de achadinhos
       </div>
 
       <h1>
-        Economizar ficou<br>
-        <span class="highlight">muito mais fácil.</span>
+        Boas ofertas?<br>
+        <span class="gradient-text">A gente encontra.</span>
       </h1>
 
-      <p class="subtitle">
-        Descubra o <strong>Radar de Ofertas</strong>:
-        seu lugar para encontrar achadinhos, conhecer produtos
-        interessantes e ficar por dentro de promoções.
-        Tudo isso em um só grupo!
+      <p class="description">
+        Conheça o <strong>Radar de Ofertas</strong>, seu espaço para
+        descobrir achadinhos, conhecer produtos e acompanhar
+        promoções compartilhadas no grupo.
       </p>
 
-      <div class="cta-area">
-        <a
-          class="cta"
-          href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="cta-icon">💬</span>
+      <div class="cta-wrap">
+        <a class="cta" href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1" target="_blank" rel="noopener noreferrer">
 
-          <span class="cta-text">
-            <strong>QUERO ENTRAR NO GRUPO!</strong>
-            <small>Toque aqui e confira os achadinhos</small>
+          <span class="cta-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/>
+            </svg>
           </span>
 
-          <span class="cta-arrow">➜</span>
+          <span class="cta-copy">
+            <strong>QUERO ENTRAR NO GRUPO</strong>
+            <small>Acesse o convite pelo WhatsApp</small>
+          </span>
+
+          <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
         </a>
 
-        <p class="cta-note">
-          ✦ Acesse o convite pelo WhatsApp e confira as ofertas.
+        <p class="trust-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+          Acesse o convite e confira as ofertas disponíveis.
         </p>
       </div>
 
@@ -678,62 +819,67 @@
 
     <section>
       <div class="section-heading">
-        <h2>Por que entrar no <span>Radar?</span></h2>
-        <p>Mais praticidade para descobrir produtos e oportunidades.</p>
+        <h2>Por que conhecer o <span>Radar?</span></h2>
+        <p>Seu próximo achadinho pode estar entre as ofertas compartilhadas.</p>
       </div>
 
       <div class="benefits">
 
         <article class="benefit">
-          <div class="benefit-icon">🛍️</div>
-          <h3>Achadinhos selecionados</h3>
-          <p>
-            Descubra produtos de diferentes categorias
-            e conheça opções para o seu dia a dia.
-          </p>
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 7H6"/>
+              <circle cx="10" cy="21" r="1"/>
+              <circle cx="18" cy="21" r="1"/>
+            </svg>
+          </div>
+          <h3>Achadinhos variados</h3>
+          <p>Conheça produtos de diferentes categorias e encontre opções interessantes para o seu dia a dia.</p>
         </article>
 
         <article class="benefit">
-          <div class="benefit-icon">✨</div>
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m13 2-3 8h7l-6 12 1-9H5l8-11Z"/>
+            </svg>
+          </div>
           <h3>Ofertas em destaque</h3>
-          <p>
-            Encontre promoções compartilhadas no grupo
-            e consulte os preços antes de comprar.
-          </p>
+          <p>Acompanhe as promoções divulgadas no grupo e confira os preços e as condições de cada produto.</p>
         </article>
 
         <article class="benefit">
-          <div class="benefit-icon">🎯</div>
-          <h3>Tudo em um só lugar</h3>
-          <p>
-            Reúna os seus achadinhos em um único espaço
-            e facilite sua busca por produtos.
-          </p>
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 2"/>
+            </svg>
+          </div>
+          <h3>Novidades em um só lugar</h3>
+          <p>Tenha um espaço para acompanhar os achadinhos e as oportunidades compartilhadas.</p>
         </article>
 
       </div>
     </section>
 
     <section class="final-card">
-      <div class="emoji">🚀</div>
+      <div class="final-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
+        </svg>
+      </div>
 
-      <h2>
-        Seu próximo achadinho<br>
-        pode estar a um clique!
-      </h2>
+      <h2>Vamos encontrar seu próximo achadinho?</h2>
 
       <p>
-        Entre no Radar de Ofertas e acompanhe os produtos,
-        as novidades e as oportunidades divulgadas no grupo.
+        Acesse nosso grupo e confira os produtos e as ofertas
+        compartilhadas pelo Radar de Ofertas.
       </p>
 
-      <a
-        class="cta-secondary"
-        href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        💛 Acessar o grupo agora ↗
+      <a class="secondary-cta" href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1" target="_blank" rel="noopener noreferrer">
+        Acessar o grupo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7M7 7h10v10"/>
+        </svg>
       </a>
     </section>
 
@@ -742,21 +888,18 @@
   <footer>
     <strong>RADAR DE OFERTAS</strong><br>
     As melhores ofertas, sempre!<br>
-    <span>
-      Preços, frete e disponibilidade podem mudar.
-      Confira as condições diretamente na loja.
-    </span><br>
+    Preços, frete e disponibilidade podem mudar.
+    Confira as condições diretamente na loja.<br>
     Alguns links divulgados podem ser links de afiliado.
   </footer>
 
-  <!-- BOTÃO FIXO EXCLUSIVO PARA CELULARES -->
-  <div class="mobile-cta">
-    <a
-      href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      💬 ENTRAR NO RADAR DE OFERTAS ↗
+  <!-- BOTÃO FIXO PARA CELULARES -->
+  <div class="mobile-bar">
+    <a href="https://chat.whatsapp.com/CHnb9TAU8QV8xO1TbMvJqc?s=cl&amp;p=i&amp;ilr=1&amp;amv=1" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/>
+      </svg>
+      ENTRAR NO RADAR DE OFERTAS
     </a>
   </div>
 
